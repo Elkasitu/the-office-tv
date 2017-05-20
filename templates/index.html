@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>The Office Local Streaming</title>
+    </head>
+    <body>
+        <ul>
+        {% for file in files %}
+            <li>
+                <video controls>
+                    <source src="{{ file }}" type="video/mp4">
+                </video>
+            </li>
+        {% enfor %}
+        </ul>
+    </body>
+</html>
