@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
         <title>The Office Local Streaming</title>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     </head>
     <body>
-        <ul>
-        {% for file in files %}
-            <li>
-                <video width="320" height="240" controls>
-                    <source src="static/{{ file }}" type="video/mp4">
-                </video>
-            </li>
-        {% endfor %}
-        </ul>
+        <div class="container-fluid">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            {% for file in files %}
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading{{ files.index(file) }}">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ files.index(file) }}" aria-expanded="true" aria-controls="collapse{{ files.index(file) }}">
+                                {{ file }}
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse{{ files.index(file) }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ files.index(file) }}">
+                        <div class="panel-body">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <video controls>
+                                    <source src="static/{{ file }}" type="video/mp4">
+                                    Your browser does not seem to support the HTML5 standard.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+        <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </body>
 </html>
