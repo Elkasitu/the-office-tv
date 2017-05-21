@@ -8,6 +8,6 @@ def index():
     files = []
     # walk the content folder recursively and add all
     # filenames to the files list
-    for (dirpath, dirnames, filenames) in walk('static/'):
+    for (dirpath, dirnames, filenames) in walk('static/content/'):
         files.extend(filenames)
     return render_template('index.html', files=files)
