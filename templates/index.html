@@ -4,11 +4,12 @@
         {% include 'header.html' %}
     </head>
     <body>
+        {% include 'navbar.html' %}
         <div class="container-fluid">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             {% for i, file in files %}
                 <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="heading {{ i }}">
+                    <div class="panel-heading" role="tab" id="heading{{ i }}">
                         <h4 class="panel-title">
                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ i }}" aria-expanded="true" aria-controls="collapse{{ i }}">
                                 {{ file }}
