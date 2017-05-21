@@ -1,32 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-        <title>The Office Local Streaming</title>
-
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        {% include 'header.html' %}
     </head>
     <body>
         <div class="container-fluid">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            {% for file in files %}
+            {% for i, file in files %}
                 <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="heading{{ files.index(file) }}">
+                    <div class="panel-heading" role="tab" id="heading {{ i }}">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ files.index(file) }}" aria-expanded="true" aria-controls="collapse{{ files.index(file) }}">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ i }}" aria-expanded="true" aria-controls="collapse{{ i }}">
                                 {{ file }}
                             </a>
                         </h4>
                     </div>
-                    <div id="collapse{{ files.index(file) }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ files.index(file) }}">
+                    <div id="collapse{{ i }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ i }}">
                         <div class="panel-body">
                             <div class="embed-responsive embed-responsive-16by9">
                                 <video controls>
-                                    <source src="static/{{ file }}" type="video/mp4">
+                                    <source src="{{ path + file }}" type="video/mp4">
                                     Your browser does not seem to support the HTML5 standard.
                                 </video>
                             </div>
@@ -36,8 +29,6 @@
             {% endfor %}
             </div>
         </div>
-        <!-- Scripts -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        {% include 'footer.html' %}
     </body>
 </html>
